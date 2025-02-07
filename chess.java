@@ -9,3 +9,12 @@ class Position {
         this.col = col;
     }
 }
+abstract class Piece {
+    boolean isWhite;
+
+    public Piece(boolean isWhite) {
+        this.isWhite = isWhite;
+    }
+
+    public abstract boolean isValidMove(Position start, Position end, Board board);
+}
