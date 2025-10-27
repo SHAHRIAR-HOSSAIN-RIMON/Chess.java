@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Chess Frontend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <header class="bar">
+      <h1>Chess</h1>
+      <div class="controls">
+        <label><input type="checkbox" id="fancyToggle" checked /> Fancy pieces</label>
+        <button id="restartBtn">Restart</button>
+      </div>
+    </header>
+
+    <div class="status" id="status">White's turn</div>
+
+    <div class="board-wrapper">
+      <div class="files top">
+        <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+      </div>
+      <div id="board" class="board"></div>
+      <div class="files bottom">
+        <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+      </div>
+      <div class="ranks left">
+        <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+      </div>
+      <div class="ranks right">
+        <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+      </div>
+    </div>
+
+    <footer class="hint">
+      Tip: Click a piece to see legal moves. Click a highlighted square to move. Capturing a King ends the game.
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
