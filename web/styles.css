@@ -1,0 +1,104 @@
+:root {
+  --dark: #769656;
+  --light: #eeeed2;
+  --highlight: #44bcd8;
+  --last: #e5c16c;
+  --sel: #f08;
+  --grid: #333;
+  --text: #222;
+  --card: #fff;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: #f6f7f8;
+}
+.app {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+}
+.controls {
+  display: flex; align-items: center; gap: 12px;
+}
+button {
+  padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer;
+}
+button:hover { background: #f2f2f2; }
+
+.status {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: var(--card);
+}
+
+.board-wrapper {
+  position: relative;
+  width: min(92vw, 640px);
+  margin: 12px 0;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--grid);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.square {
+  display: grid; place-items: center;
+  font-size: clamp(20px, 5.2vw, 40px);
+  user-select: none;
+  position: relative;
+}
+.square.dark { background: var(--dark); }
+.square.light { background: var(--light); }
+
+.square .glyph {
+  line-height: 1;
+}
+
+.square.highlight::after,
+.square.last::after,
+.square.selected::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.square.highlight::after { background: color-mix(in srgb, var(--highlight) 40%, transparent); }
+.square.last::after { background: color-mix(in srgb, var(--last) 40%, transparent); }
+.square.selected::after { outline: 3px solid var(--sel); }
+
+.coord {
+  position: absolute;
+  font-size: 10px;
+  opacity: 0.7;
+  padding: 2px 4px;
+}
+.coord.file { bottom: 2px; right: 4px; }
+.coord.rank { top: 2px; left: 4px; }
+
+.files, .ranks {
+  position: absolute; display: grid;
+  color: #666; font-size: 12px;
+}
+.files { grid-template-columns: repeat(8, 1fr); width: 100%; }
+.files.top { top: -18px; }
+.files.bottom { bottom: -18px; }
+.files span { text-align: center; }
+
+.ranks { grid-template-rows: repeat(8, 1fr); height: 100%; }
+.ranks.left { left: -18px; }
+.ranks.right { right: -18px; }
+.ranks span { display: grid; place-items: center; height: 100%; }
+.hint { color: #666; font-size: 12px; margin-top: 8px; }
